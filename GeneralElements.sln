@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralElementsZapretUI", "GeneralElementsZapretUI\GeneralElementsZapretUI.csproj", "{CE54D168-8271-4B12-877A-073F5587D564}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE54D168-8271-4B12-877A-073F5587D564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE54D168-8271-4B12-877A-073F5587D564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE54D168-8271-4B12-877A-073F5587D564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE54D168-8271-4B12-877A-073F5587D564}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
