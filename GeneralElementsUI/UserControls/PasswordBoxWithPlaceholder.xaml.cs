@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
-namespace GeneralElementsZapretUI.UserControls;
+namespace GeneralElementsUI.UserControls;
 
 public partial class PasswordBoxWithPlaceholder : UserControl, INotifyPropertyChanged
 {

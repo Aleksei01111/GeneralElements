@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 
-namespace GeneralElementsZapretUI.UserControls;
+namespace GeneralElementsUI.UserControls;
 
 public partial class ComboBoxWithPlaceholder : UserControl, INotifyPropertyChanged
 {
