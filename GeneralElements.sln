@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeneralElementsUI", "GeneralElementsUI\GeneralElementsUI.csproj", "{CE54D168-8271-4B12-877A-073F5587D564}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{8548E773-1826-45E5-8C90-B2E8B16B751F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{CE54D168-8271-4B12-877A-073F5587D564}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE54D168-8271-4B12-877A-073F5587D564}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE54D168-8271-4B12-877A-073F5587D564}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8548E773-1826-45E5-8C90-B2E8B16B751F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8548E773-1826-45E5-8C90-B2E8B16B751F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8548E773-1826-45E5-8C90-B2E8B16B751F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8548E773-1826-45E5-8C90-B2E8B16B751F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

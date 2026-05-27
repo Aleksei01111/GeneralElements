@@ -1,4 +1,5 @@
-﻿*.d
+﻿Private/
+*.d
 *.slo
 *.lo
 *.o

@@ -90,4 +90,8 @@
     <Style TargetType="userControls:PasswordBoxWithPlaceholder">
         <Setter Property="Margin" Value="0 10 0 10"/>
     </Style>
+    
+    <Style TargetType="userControls:UniversalTextBoxWithPlaceholder">
+        <Setter Property="Margin" Value="0 10 0 10"/>
+    </Style>
 </ResourceDictionary>
