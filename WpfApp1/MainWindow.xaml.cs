@@ -34,10 +34,21 @@ public partial class MainWindow : Window
         
         _registrationFields.AddRange(userLoginRegister, userPasswordRegister, userRepeatRegister, userFullNameRegister);
         
-        var authWindow = new GeneralElementsUI.Views.AuthorizationWindow(_registrationFields, _loginFields, OnAuthEnd, CheckRegister, true);
+        var authWindow = new GeneralElementsUI.Views.AuthorizationWindow(_registrationFields, _loginFields, OnAuthEnd, CheckRegister, CheckLogin,true);
         authWindow.Show();
         
         InitializeComponent();
+    }
+
+    private bool CheckLogin(User arg)
+    {
+        if (arg.Fields.First(u => u is UserLoginField).Value == "admin")
+        {
+            MessageBox.Show("Такой логин уже есть");
+            return false;
+        }
+
+        return true;
     }
 
     private bool CheckRegister(User arg)

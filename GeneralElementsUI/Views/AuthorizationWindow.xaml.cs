@@ -26,13 +26,14 @@ public partial class AuthorizationWindow : Window
         List<UserField> loginFields, 
         Action<User> onAuthEnd, 
         Func<User, bool> checkRegister,
+        Func<User, bool> checkLogin,
         bool canAuthGuest = false)
     {
         CanAuthGuest = canAuthGuest;
         
         _onAuthEnd = onAuthEnd;
         
-        _loginPage = new(loginFields);
+        _loginPage = new(loginFields, checkLogin, OnLoginDone);
         _registrationPage = new(registrationFields, checkRegister, RegisterDone);
         
         _registrationFields = registrationFields;
@@ -43,6 +44,13 @@ public partial class AuthorizationWindow : Window
         
         MainButton.Content = NavigateForTextAndGetNewText(_loginText);
     }
+
+    private void OnLoginDone(User obj)
+    {
+        _onAuthEnd(new User(_loginFields, User.DefaultRoles.Authorized));
+        Close();
+    }
+
 
     private void RegisterDone(User obj)
     {
