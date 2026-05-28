@@ -17,24 +17,15 @@ namespace WpfApp1;
 /// </summary>
 public partial class MainWindow : Window
 {
-    private List<UserField> _loginFields =
-    [
-        new UserLoginField(),
-        new UserPasswordField(),
-    ];
-
-    private List<UserField> _registrationFields = new();
-    
     public MainWindow()
     {
-        var userLoginRegister = new UserLoginField();
-        var userPasswordRegister = new UserPasswordField();
-        var userRepeatRegister = new UserRepeatPasswordField(userPasswordRegister);
-        var userFullNameRegister = new UserFullNameField();
-        
-        _registrationFields.AddRange(userLoginRegister, userPasswordRegister, userRepeatRegister, userFullNameRegister);
-        
-        var authWindow = new GeneralElementsUI.Views.AuthorizationWindow(_registrationFields, _loginFields, OnAuthEnd, CheckRegister, CheckLogin,true);
+        var authWindow = new GeneralElementsUI.Views.AuthorizationWindow(
+            GeneralElementsUI.Templates.RegisterFieldsTemplates.GetRegisterFieldsVariant2(),
+            GeneralElementsUI.Templates.LoginFieldsTemplates.GetLoginFieldsVariant1(),
+            OnAuthEnd,
+            CheckRegister,
+            CheckLogin,
+            true);
         authWindow.Show();
         
         InitializeComponent();

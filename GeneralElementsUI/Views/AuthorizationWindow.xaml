@@ -8,7 +8,13 @@
         mc:Ignorable="d"
         Title="Авторизация" Height="500" Width="400">
     <Window.Resources>
-        <local:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+            
+            <local:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
