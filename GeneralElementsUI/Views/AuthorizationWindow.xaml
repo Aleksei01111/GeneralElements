@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:GeneralElementsUI.Views"
         d:DataContext="{d:DesignInstance Type=local:AuthorizationWindow, IsDesignTimeCreatable=True}"
         mc:Ignorable="d"
-        Title="Авторизация" Height="500" Width="400">
+        Title="Авторизация" Height="500" Width="400"
+        Closing="AuthorizationWindow_OnClosing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

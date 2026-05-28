@@ -26,6 +26,7 @@ public partial class MainWindow : Window
             CheckRegister,
             CheckLogin,
             true);
+        authWindow.OnAuthCancel += () => Environment.Exit(0);
         authWindow.Show();
         
         InitializeComponent();

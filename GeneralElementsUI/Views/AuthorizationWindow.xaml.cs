@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.ComponentModel;
+using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -9,6 +10,13 @@ namespace GeneralElementsUI.Views;
 
 public partial class AuthorizationWindow : Window
 {
+    /// <summary>
+    /// Вызывается при закрытии окно до окончания авторизации
+    /// </summary>
+    public delegate void OnAuthCancelSignature();
+
+    private bool _authComplete = false;
+    
     private List<UserField> _registrationFields;
     private List<UserField> _loginFields;
     
@@ -21,6 +29,11 @@ public partial class AuthorizationWindow : Window
     private string _loginText = "Войти";
 
     public bool CanAuthGuest { get; }
+
+    /// <summary>
+    /// Вызывается при закрытии окно до окончания авторизации
+    /// </summary>
+    public OnAuthCancelSignature OnAuthCancel { get; set; }
     
     public AuthorizationWindow(List<UserField> registrationFields, 
         List<UserField> loginFields, 
@@ -48,6 +61,7 @@ public partial class AuthorizationWindow : Window
     private void OnLoginDone(User obj)
     {
         _onAuthEnd(new User(_loginFields, User.DefaultRoles.Authorized));
+        _authComplete = true;
         Close();
     }
 
@@ -55,6 +69,7 @@ public partial class AuthorizationWindow : Window
     private void RegisterDone(User obj)
     {
         _onAuthEnd(new User(_registrationFields, User.DefaultRoles.Authorized));
+        _authComplete = true;
         Close();
     }
 
@@ -79,7 +94,14 @@ public partial class AuthorizationWindow : Window
     private void AuthorizationGuest_OnClick(object sender, RoutedEventArgs e)
     {
         _onAuthEnd(new User([], User.DefaultRoles.NonAuthorized));
+        _authComplete = true;
         Close();
+    }
+
+    private void AuthorizationWindow_OnClosing(object? sender, CancelEventArgs e)
+    {
+        if (!_authComplete)
+            OnAuthCancel();
     }
 }
 
