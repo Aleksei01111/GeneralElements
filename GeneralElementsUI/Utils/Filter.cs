@@ -2,7 +2,7 @@
 
 public class Filter<T>(Filter<T>.Modes mode)
 {
-    public List<FilterCategory<T>> Categories { get; set; } = new();
+    public List<IFilterCategory<T>> Categories { get; set; } = new();
     
     public enum Modes
     {
@@ -32,10 +32,10 @@ public class Filter<T>(Filter<T>.Modes mode)
     }
 }
 
-public abstract class FilterCategory<T>(string title, bool isEnable)
+public interface IFilterCategory<T>
 {
-    public string Title { get; set; } = title;
-    public bool IsEnable { get; set; } = isEnable;
+    public string Title { get; set; }
+    public bool IsEnable { get; set; }
 
     public abstract bool CheckAccept(T obj);
 }
