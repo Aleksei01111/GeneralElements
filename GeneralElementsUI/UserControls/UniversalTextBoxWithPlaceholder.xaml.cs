@@ -23,6 +23,8 @@ public partial class UniversalTextBoxWithPlaceholder : UserControl
 
     private FieldType _fieldMode = FieldType.Text;
 
+    public GeneralElementsInputs.GeneralInputsTextChangedEventHandler OnTextChanged;
+    
     public string Text
     {
         get => (string)GetValue(TextProperty);
@@ -65,6 +67,11 @@ public partial class UniversalTextBoxWithPlaceholder : UserControl
     private void HidePassword_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         PasswordText.Visibility = Visibility.Hidden;
+    }
+
+    private void PasswordText_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        OnTextChanged(sender, e, Text);
     }
 }
 

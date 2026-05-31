@@ -27,6 +27,7 @@
                  UpdateSourceTrigger=PropertyChanged}" AcceptsReturn="True" AcceptsTab="True"
                  VerticalAlignment="Stretch" HorizontalAlignment="Stretch" TextWrapping="Wrap"
                  IsReadOnly="{Binding IsReadOnly, RelativeSource={RelativeSource AncestorType=UserControl},
-                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                 Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 TextChanged="TextBoxBase_OnTextChanged"/>
     </Grid>
 </UserControl>

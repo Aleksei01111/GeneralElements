@@ -64,4 +64,9 @@ public partial class MainWindow : Window
         else
             MessageBox.Show(user.Fields.First().Value);
     }
+
+    private void MultilineTextWithPlaceholder_OnOnTextChanged(object sender, TextChangedEventArgs e, string text)
+    {
+        MessageBox.Show(text);
+    }
 }

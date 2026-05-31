@@ -22,6 +22,8 @@ public partial class TextBoxWithPlaceholder : UserControl
     
     public static readonly DependencyProperty IsReadOnlyProperty = 
         DependencyProperty.Register(nameof(IsReadOnly), typeof(bool),typeof(TextBoxWithPlaceholder));
+
+    public GeneralElementsInputs.GeneralInputsTextChangedEventHandler OnTextChanged;
     
     public string Placeholder
     {
@@ -44,5 +46,10 @@ public partial class TextBoxWithPlaceholder : UserControl
     public TextBoxWithPlaceholder()
     {
         InitializeComponent();
+    }
+
+    private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        OnTextChanged(sender, e, Text);
     }
 }

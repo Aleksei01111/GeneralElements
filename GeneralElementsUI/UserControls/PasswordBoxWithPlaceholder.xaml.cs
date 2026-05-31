@@ -14,6 +14,8 @@ public partial class PasswordBoxWithPlaceholder : UserControl, INotifyPropertyCh
     public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register(
         nameof(Password), typeof(string), typeof(PasswordBoxWithPlaceholder), new PropertyMetadata(default(string)));
 
+    public GeneralElementsInputs.GeneralInputsTextChangedEventHandler TextChanged;
+    
     public string Password
     {
         get => (string)GetValue(PasswordProperty);
@@ -50,5 +52,10 @@ public partial class PasswordBoxWithPlaceholder : UserControl, INotifyPropertyCh
     private void HidePassword_OnMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
     {
         PasswordText.Visibility = Visibility.Hidden;
+    }
+
+    private void PasswordText_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        TextChanged(sender, e, Password);
     }
 }

@@ -25,6 +25,8 @@ public partial class MultilineTextWithPlaceholder : UserControl
             typeof(bool),
             typeof(MultilineTextWithPlaceholder));
     
+    public event GeneralElementsInputs.GeneralInputsTextChangedEventHandler OnTextChanged;
+    
     public string Placeholder
     {
         get => (string)GetValue(PlaceholderProperty);
@@ -43,8 +45,15 @@ public partial class MultilineTextWithPlaceholder : UserControl
         set => SetValue(IsReadOnlyProperty, value);
     }
     
+    
+    
     public MultilineTextWithPlaceholder()
     {
         InitializeComponent();
+    }
+
+    private void TextBoxBase_OnTextChanged(object sender, TextChangedEventArgs e)
+    {
+        OnTextChanged(sender, e, Text);
     }
 }
