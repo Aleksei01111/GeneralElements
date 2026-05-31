@@ -9,5 +9,6 @@
         Title="MainWindow" Height="450" Width="800">
     <StackPanel>
         <uControls:UniversalTextBoxWithPlaceholder Text="ads" Placeholder="Text" FieldMode="Text"/>
+        <uControls:MultilineTextWithPlaceholder Placeholder="Много текста" OnTextChanged="MultilineTextWithPlaceholder_OnOnTextChanged"/>
     </StackPanel>
 </Window>

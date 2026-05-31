@@ -9,37 +9,39 @@
     <UserControl.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles.xaml"/>
+                <ResourceDictionary Source="../Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <local:VisibleIfTextBoxConverter x:Key="VisibleIfTextBox"/>
-            <local:HiddenIfTextBoxConverter x:Key="HiddenIfTextboxMode"/>
+            <local:VisibleIfTextBoxConverter x:Key="VisibleIfTextBox" />
+            <local:HiddenIfTextBoxConverter x:Key="HiddenIfTextboxMode" />
         </ResourceDictionary>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition />
             <ColumnDefinition />
-            <ColumnDefinition Width="0.2*"/>
+            <ColumnDefinition Width="0.2*" />
         </Grid.ColumnDefinitions>
 
         <TextBlock Style="{StaticResource PlaceholderText}"
                    Text="{Binding Placeholder, 
             RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
         <PasswordBox Grid.Column="1" Style="{StaticResource Password}"
-                     x:Name="PasswordPB" PasswordChanged="PasswordPB_OnPasswordChanged" 
+                     x:Name="PasswordPB" PasswordChanged="PasswordPB_OnPasswordChanged"
                      Visibility="{Binding FieldMode, 
-                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource HiddenIfTextboxMode}}"/>
+                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource HiddenIfTextboxMode}}" />
         <TextBox Grid.Column="1" x:Name="PasswordText"
                  Text="{Binding Text, 
             RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                 Style="{StaticResource Text}" 
+                 Style="{StaticResource Text}"
                  Visibility="{Binding FieldMode, 
-                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource VisibleIfTextBox}}"/>
-        
-        <Image Grid.Column="2" 
-               MouseLeftButtonDown="ShowPassword_OnMouseLeftButtonDown" MouseLeftButtonUp="HidePassword_OnMouseLeftButtonUp"
+                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource VisibleIfTextBox}}" 
+                 TextChanged="PasswordText_OnTextChanged"/>
+
+        <Image Grid.Column="2"
+               MouseLeftButtonDown="ShowPassword_OnMouseLeftButtonDown"
+               MouseLeftButtonUp="HidePassword_OnMouseLeftButtonUp"
                Source="../Resources/Images/eye.png" Stretch="Uniform" Width="20"
                Visibility="{Binding FieldMode, 
-                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource HiddenIfTextboxMode}}"/>
+                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource HiddenIfTextboxMode}}" />
     </Grid>
 </UserControl>
