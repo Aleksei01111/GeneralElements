@@ -34,8 +34,7 @@
             RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Style="{StaticResource Text}"
                  Visibility="{Binding FieldMode, 
-                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource VisibleIfTextBox}}" 
-                 TextChanged="PasswordText_OnTextChanged"/>
+                     RelativeSource={RelativeSource AncestorType=UserControl}, Converter={StaticResource VisibleIfTextBox}}" />
 
         <Image Grid.Column="2"
                MouseLeftButtonDown="ShowPassword_OnMouseLeftButtonDown"

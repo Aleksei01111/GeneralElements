@@ -27,7 +27,6 @@
                  UpdateSourceTrigger=PropertyChanged}" 
                  IsReadOnly="{Binding IsReadOnly, 
                  RelativeSource={RelativeSource AncestorType=UserControl}, Mode=TwoWay,
-                  UpdateSourceTrigger=PropertyChanged}"
-                 TextChanged="TextBoxBase_OnTextChanged"/>
+                  UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </UserControl>

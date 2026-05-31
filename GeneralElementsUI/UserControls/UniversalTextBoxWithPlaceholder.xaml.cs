@@ -12,7 +12,8 @@ namespace GeneralElementsUI.UserControls;
 public partial class UniversalTextBoxWithPlaceholder : UserControl
 {
     public static readonly DependencyProperty PlaceholderProperty = DependencyProperty.Register(
-        nameof(Placeholder), typeof(string), typeof(UniversalTextBoxWithPlaceholder), new PropertyMetadata(default(string)));
+        nameof(Placeholder), typeof(string), typeof(UniversalTextBoxWithPlaceholder),
+        new PropertyMetadata(default(string)));
 
     public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
         nameof(Text), typeof(string), typeof(UniversalTextBoxWithPlaceholder), new PropertyMetadata(default(string)));
@@ -23,14 +24,12 @@ public partial class UniversalTextBoxWithPlaceholder : UserControl
 
     private FieldType _fieldMode = FieldType.Text;
 
-    public GeneralElementsInputs.GeneralInputsTextChangedEventHandler OnTextChanged;
-    
     public string Text
     {
         get => (string)GetValue(TextProperty);
         set => SetValue(TextProperty, value);
     }
-    
+
     public string Placeholder
     {
         get => (string)GetValue(PlaceholderProperty);
@@ -54,6 +53,7 @@ public partial class UniversalTextBoxWithPlaceholder : UserControl
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
+
     protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -69,10 +69,6 @@ public partial class UniversalTextBoxWithPlaceholder : UserControl
         PasswordText.Visibility = Visibility.Hidden;
     }
 
-    private void PasswordText_OnTextChanged(object sender, TextChangedEventArgs e)
-    {
-        OnTextChanged(sender, e, Text);
-    }
 }
 
 public class VisibleIfTextBoxConverter : IValueConverter
