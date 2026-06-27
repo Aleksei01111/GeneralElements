@@ -36,7 +36,9 @@
                 Click="Register_OnClick" 
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Center"
-                x:Name="MainButton"/>
+                x:Name="MainButton"
+                Visibility="{Binding ButtonsConfiguration.CanRegister, 
+                    Converter={StaticResource BooleanToVisibility}, UpdateSourceTrigger=PropertyChanged}"/>
                 
         <Button Grid.Row="1"
                 Content="Войти как гость"
@@ -44,6 +46,7 @@
                 Click="AuthorizationGuest_OnClick"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Right"
-                Visibility="{Binding CanAuthGuest, Converter={StaticResource BooleanToVisibility}, UpdateSourceTrigger=PropertyChanged}"/>
+                Visibility="{Binding ButtonsConfiguration.CanGuest, 
+                    Converter={StaticResource BooleanToVisibility}, UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>

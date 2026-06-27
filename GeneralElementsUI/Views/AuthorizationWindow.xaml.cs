@@ -28,7 +28,7 @@ public partial class AuthorizationWindow : Window
     private string _registerText = "Зарегистрироваться";
     private string _loginText = "Войти";
 
-    public bool CanAuthGuest { get; }
+    public AuthWindowButtonsConfiguration ButtonsConfiguration { get; } = new();
 
     /// <summary>
     /// Вызывается при закрытии окно до окончания авторизации
@@ -40,9 +40,32 @@ public partial class AuthorizationWindow : Window
         Action<User> onAuthEnd, 
         Func<User, bool> checkRegister,
         Func<User, bool> checkLogin,
-        bool canAuthGuest = false)
+        bool canGuest = false)
     {
-        CanAuthGuest = canAuthGuest;
+        ButtonsConfiguration.CanGuest = canGuest;
+        
+        _onAuthEnd = onAuthEnd;
+        
+        _loginPage = new(loginFields, checkLogin, OnLoginDone);
+        _registrationPage = new(registrationFields, checkRegister, RegisterDone);
+        
+        _registrationFields = registrationFields;
+        _loginFields = loginFields;
+        
+        InitializeComponent();
+        DataContext = this;
+        
+        MainButton.Content = NavigateForTextAndGetNewText(_loginText);
+    }
+    
+    public AuthorizationWindow(List<UserField> registrationFields, 
+        List<UserField> loginFields, 
+        Action<User> onAuthEnd, 
+        Func<User, bool> checkRegister,
+        Func<User, bool> checkLogin,
+        AuthWindowButtonsConfiguration buttonsConfiguration)
+    {
+        ButtonsConfiguration = buttonsConfiguration;
         
         _onAuthEnd = onAuthEnd;
         
@@ -103,6 +126,14 @@ public partial class AuthorizationWindow : Window
         if (!_authComplete)
             OnAuthCancel();
     }
+}
+
+public class AuthWindowButtonsConfiguration(bool canRegister, bool canGuest)
+{
+    public bool CanRegister { get; set; } = canRegister;
+    public bool CanGuest { get; set; } = canGuest;
+    
+    public AuthWindowButtonsConfiguration() : this(true, true) {}
 }
 
 public class BooleanToVisibilityConverter : IValueConverter

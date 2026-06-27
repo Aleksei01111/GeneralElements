@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeneralElementsUI.Entities;
+using GeneralElementsUI.Views;
 
 namespace WpfApp1;
 
@@ -25,7 +26,7 @@ public partial class MainWindow : Window
             OnAuthEnd,
             CheckRegister,
             CheckLogin,
-            true);
+            new AuthWindowButtonsConfiguration(false, false));
         authWindow.OnAuthCancel += () => Environment.Exit(0);
         authWindow.Show();
         
