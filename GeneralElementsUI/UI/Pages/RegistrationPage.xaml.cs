@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using GeneralElementsUI.Entities;
 
-namespace GeneralElementsUI.Pages;
+namespace GeneralElementsUI.UI.Pages;
 
 public partial class RegistrationPage : Page
 {
@@ -10,10 +10,13 @@ public partial class RegistrationPage : Page
     private Action<User> _registerDone;
     private User _user;
     
-    public List<UserField> RegisterFields { get; }
+    public List<UserField>? RegisterFields { get; }
     
-    public RegistrationPage(List<UserField> registerFields, Func<User, bool> checkRegister, Action<User> registerDone)
+    public RegistrationPage(List<UserField>? registerFields, Func<User, bool> checkRegister, Action<User> registerDone)
     {
+        if (registerFields == null)
+            return;
+        
         _checkRegister = checkRegister;
         _registerDone = registerDone;
         
@@ -28,6 +31,13 @@ public partial class RegistrationPage : Page
 
     private void RegisterDone_OnClick(object sender, RoutedEventArgs e)
     {
+        if (_user == null)
+        {
+            if (_checkRegister(_user))
+                _registerDone(_user);
+            return;
+        }
+        
         var validResult = _user.Validate();
         if (!validResult.isValid)
         {

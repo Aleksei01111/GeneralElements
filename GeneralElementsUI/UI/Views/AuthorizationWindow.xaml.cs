@@ -1,12 +1,11 @@
 ﻿using System.ComponentModel;
-using System.Globalization;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using GeneralElementsUI.Entities;
-using GeneralElementsUI.UserControls;
+using GeneralElementsUI.UI.Pages;
+using GeneralElementsUI.Views;
 
-namespace GeneralElementsUI.Views;
+namespace GeneralElementsUI.UI.Views;
 
 public partial class AuthorizationWindow : Window
 {
@@ -17,13 +16,13 @@ public partial class AuthorizationWindow : Window
 
     private bool _authComplete = false;
     
-    private List<UserField> _registrationFields;
+    private List<UserField>? _registrationFields;
     private List<UserField> _loginFields;
     
     private Action<User> _onAuthEnd;
 
-    private Pages.LoginPage _loginPage;
-    private Pages.RegistrationPage _registrationPage;
+    private LoginPage _loginPage;
+    private RegistrationPage _registrationPage;
 
     private string _registerText = "Зарегистрироваться";
     private string _loginText = "Войти";
@@ -35,30 +34,20 @@ public partial class AuthorizationWindow : Window
     /// </summary>
     public OnAuthCancelSignature OnAuthCancel { get; set; }
     
-    public AuthorizationWindow(List<UserField> registrationFields, 
+    public AuthorizationWindow(
+        List<UserField>? registrationFields, 
         List<UserField> loginFields, 
         Action<User> onAuthEnd, 
         Func<User, bool> checkRegister,
         Func<User, bool> checkLogin,
-        bool canGuest = false)
+        bool canGuest = false) : 
+        this(registrationFields, loginFields, 
+            onAuthEnd, checkRegister, 
+            checkLogin, new AuthWindowButtonsConfiguration(true, canGuest))
     {
-        ButtonsConfiguration.CanGuest = canGuest;
-        
-        _onAuthEnd = onAuthEnd;
-        
-        _loginPage = new(loginFields, checkLogin, OnLoginDone);
-        _registrationPage = new(registrationFields, checkRegister, RegisterDone);
-        
-        _registrationFields = registrationFields;
-        _loginFields = loginFields;
-        
-        InitializeComponent();
-        DataContext = this;
-        
-        MainButton.Content = NavigateForTextAndGetNewText(_loginText);
     }
     
-    public AuthorizationWindow(List<UserField> registrationFields, 
+    public AuthorizationWindow(List<UserField>? registrationFields, 
         List<UserField> loginFields, 
         Action<User> onAuthEnd, 
         Func<User, bool> checkRegister,
@@ -67,13 +56,15 @@ public partial class AuthorizationWindow : Window
     {
         ButtonsConfiguration = buttonsConfiguration;
         
-        _onAuthEnd = onAuthEnd;
-        
-        _loginPage = new(loginFields, checkLogin, OnLoginDone);
-        _registrationPage = new(registrationFields, checkRegister, RegisterDone);
-        
         _registrationFields = registrationFields;
         _loginFields = loginFields;
+        
+        _onAuthEnd = onAuthEnd;
+        
+        _loginPage = new LoginPage(loginFields, checkLogin, OnLoginDone);
+        _registrationPage = new RegistrationPage(registrationFields, checkRegister, RegisterDone);
+        
+        if(registrationFields == null) ButtonsConfiguration.CanRegister = false;
         
         InitializeComponent();
         DataContext = this;

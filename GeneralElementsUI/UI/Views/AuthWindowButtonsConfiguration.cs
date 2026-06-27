@@ -1,4 +1,4 @@
-﻿namespace GeneralElementsUI.Views;
+﻿namespace GeneralElementsUI.UI.Views;
 
 /// <summary>
 /// Класс для настройки кнопок на окнах авторизации

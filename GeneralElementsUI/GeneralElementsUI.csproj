@@ -14,4 +14,22 @@
       </Resource>
     </ItemGroup>
 
+    <ItemGroup>
+      <Page Update="UI\Pages\LoginPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="UI\Pages\RegistrationPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="UI\Views\AuthorizationWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+      <Page Update="Styles.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </Page>
+    </ItemGroup>
+
 </Project>

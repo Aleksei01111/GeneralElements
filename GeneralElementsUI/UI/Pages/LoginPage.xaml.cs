@@ -2,7 +2,7 @@
 using System.Windows.Controls;
 using GeneralElementsUI.Entities;
 
-namespace GeneralElementsUI.Pages;
+namespace GeneralElementsUI.UI.Pages;
 
 public partial class LoginPage : Page
 {

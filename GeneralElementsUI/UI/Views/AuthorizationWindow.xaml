@@ -1,17 +1,18 @@
-﻿<Window x:Class="GeneralElementsUI.Views.AuthorizationWindow"
+﻿<Window x:Class="GeneralElementsUI.UI.Views.AuthorizationWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:GeneralElementsUI.Views"
-        d:DataContext="{d:DesignInstance Type=local:AuthorizationWindow, IsDesignTimeCreatable=True}"
+        xmlns:views="clr-namespace:GeneralElementsUI.UI.Views"
+        d:DataContext="{d:DesignInstance Type=views:AuthorizationWindow, IsDesignTimeCreatable=True}"
         mc:Ignorable="d"
         Title="Авторизация" Height="500" Width="400"
         Closing="AuthorizationWindow_OnClosing">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="../Styles.xaml"/>
+                <ResourceDictionary Source="../../Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             
             <local:BooleanToVisibilityConverter x:Key="BooleanToVisibility"/>

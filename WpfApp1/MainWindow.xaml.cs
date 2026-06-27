@@ -9,6 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GeneralElementsUI.Entities;
+using GeneralElementsUI.UI.Views;
 using GeneralElementsUI.Views;
 
 namespace WpfApp1;
@@ -20,13 +21,13 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
-        var authWindow = new GeneralElementsUI.Views.AuthorizationWindow(
+        var authWindow = new AuthorizationWindow(
             GeneralElementsUI.Templates.RegisterFieldsTemplates.GetRegisterFieldsVariant2(),
             GeneralElementsUI.Templates.LoginFieldsTemplates.GetLoginFieldsVariant1(),
             OnAuthEnd,
             CheckRegister,
             CheckLogin,
-            new AuthWindowButtonsConfiguration(false, false));
+            new AuthWindowButtonsConfiguration(true, false));
         authWindow.OnAuthCancel += () => Environment.Exit(0);
         authWindow.Show();
         

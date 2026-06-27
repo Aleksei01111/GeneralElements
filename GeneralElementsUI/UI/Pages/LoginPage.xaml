@@ -1,17 +1,17 @@
-﻿<Page x:Class="GeneralElementsUI.Pages.LoginPage"
+﻿<Page x:Class="GeneralElementsUI.UI.Pages.LoginPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:uControls="clr-namespace:GeneralElementsUI.UserControls"
-      xmlns:local="clr-namespace:GeneralElementsUI.Pages"
+      xmlns:pages="clr-namespace:GeneralElementsUI.UI.Pages"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance Type=local:LoginPage, IsDesignTimeCreatable=True}"
+      d:DataContext="{d:DesignInstance Type=pages:LoginPage, IsDesignTimeCreatable=True}"
       Title="LoginPage" d:DesignHeight="450" d:DesignWidth="300">
       <Page.Resources>
           <ResourceDictionary>
               <ResourceDictionary.MergedDictionaries>
-                  <ResourceDictionary Source="../Styles.xaml"/>
+                  <ResourceDictionary Source="../../Styles.xaml"/>
               </ResourceDictionary.MergedDictionaries>
           </ResourceDictionary>
       </Page.Resources>
