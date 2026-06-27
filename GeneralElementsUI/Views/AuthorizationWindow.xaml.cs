@@ -127,26 +127,3 @@ public partial class AuthorizationWindow : Window
             OnAuthCancel();
     }
 }
-
-public class AuthWindowButtonsConfiguration(bool canRegister, bool canGuest)
-{
-    public bool CanRegister { get; set; } = canRegister;
-    public bool CanGuest { get; set; } = canGuest;
-    
-    public AuthWindowButtonsConfiguration() : this(true, true) {}
-}
-
-public class BooleanToVisibilityConverter : IValueConverter
-{
-    public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
-    {
-        if (value is bool b && b)
-            return Visibility.Visible;
-        return Visibility.Hidden;
-    }
-
-    public object? ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
-    {
-        throw new NotImplementedException();
-    }
-}
